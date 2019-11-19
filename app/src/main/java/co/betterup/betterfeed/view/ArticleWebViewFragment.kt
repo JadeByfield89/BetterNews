@@ -43,7 +43,6 @@ class ArticleWebViewFragment : Fragment(), ArticleWebView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //val webview = view.findViewById<WebView>(R.id.webview)
         val settings = view.webview.settings
         settings.javaScriptEnabled = true
         settings.domStorageEnabled = true

@@ -1,8 +1,10 @@
 package co.betterup.betterfeed.view
 
+import co.betterup.betterfeed.model.Article
+
 interface MainFeedView {
 
-    fun displayArticlesList()
+    fun displayArticlesList(articleList: ArrayList<Article>)
 
     fun displayArticleWebview(articleLink: String)
 

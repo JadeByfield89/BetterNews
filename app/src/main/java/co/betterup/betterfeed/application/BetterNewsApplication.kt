@@ -2,10 +2,12 @@ package co.betterup.betterfeed.application
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import co.betterup.betterfeed.model.Article
 
-
+/**
+ * Since we don't need any data to persist between app launches for this project, using SharedPreferences is not necessary.
+ * We can just store app state data(in this case, a user's favorites) in our custom Application class here.
+ */
 class BetterNewsApplication : Application() {
 
 
@@ -14,7 +16,7 @@ class BetterNewsApplication : Application() {
     }
 
     companion object {
-        private val favoriteArticles = ArrayList<Article>()
+        val favoriteArticles = ArrayList<Article>()
         private var instance: BetterNewsApplication? = null
 
         fun applicationContext(): Context {
@@ -23,37 +25,28 @@ class BetterNewsApplication : Application() {
 
         fun isArticleAFavorite(article: Article): Boolean {
 
-            if(favoriteArticles.contains(article)){
+            if (favoriteArticles.contains(article)) {
                 return true
             }
 
             return false
         }
 
-        fun addArticleToFavorites(article: Article){
+        fun addArticleToFavorites(article: Article) {
 
-            if(!favoriteArticles.contains(article)){
+            if (!favoriteArticles.contains(article)) {
                 favoriteArticles.add(article)
             }
 
-            Log.d("BetterNewsApplication", "Added article " + article.id + " to favorites")
-            Log.d("BetterNewsApplication", "Favorites list size => : " + favoriteArticles.size)
         }
 
-        fun removeArticleFromFavorites(article: Article){
+        fun removeArticleFromFavorites(article: Article) {
 
-            if(favoriteArticles.contains(article)){
+            if (favoriteArticles.contains(article)) {
                 favoriteArticles.remove(article)
             }
 
-
-            Log.d("BetterNewsApplication", "Removed article " + article.id + " from favorites")
-            Log.d("BetterNewsApplication", "Favorites list size => : " + favoriteArticles.size)
         }
-    }
-
-    override fun onCreate() {
-        super.onCreate()
 
     }
 

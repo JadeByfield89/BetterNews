@@ -16,8 +16,6 @@ class MainFeedPresenterImpl(val view: MainFeedView) : MainFeedPresenter {
 
         val articles = ArrayList<Article>()
         val jsonString = BetterNewsApplication.applicationContext().assets.open("articles.json").bufferedReader().use { it.readText() }
-        Log.d("MainFeedPresenterImpl", "New Article String => : " + jsonString)
-
 
         val gson = Gson()
         val jsonObject = JSONObject(jsonString)
@@ -32,18 +30,10 @@ class MainFeedPresenterImpl(val view: MainFeedView) : MainFeedPresenter {
             val articleObject = gson.fromJson(articleJsonObject.toString(), Article::class.java)
 
             articles.add(articleObject)
-            Log.d("MainFeedPresenterImpl", "Article " + i + "added to list")
-
         }
 
-        Log.d("MainFeedPresenterImpl", "List size => " + articles.size)
-
-
-
-
-
+        view.displayArticlesList(articles)
         return articles
-        // Call view to display articles list once they've completed parsing
     }
 
 }

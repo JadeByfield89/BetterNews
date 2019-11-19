@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:maxHeight="120dp"
+    android:id="@+id/item_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/articleTitle"
+        android:textSize="16sp"
+        android:textColor="#808181"
+        android:textStyle="bold"
+        android:text="The title of the article should go here. "
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:maxWidth="330dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:textSize="16sp"
+        android:layout_below="@id/articleTitle"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Here is where the article description would go. This content is longer than the title and can possibly span multiple lines."
+        android:textColor="#969696"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/articleDescription"
+        android:layout_width="wrap_content"
+        android:maxWidth="330dp"
+        android:layout_height="wrap_content"/>
+
+
+    <ImageView
+        android:id="@+id/favoriteIcon"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_favorite_border_24px"
+        android:layout_marginEnd="12dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"/>
+
+
+    <View
+        android:background="#d4d4d4"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="2px"/>
+
+</RelativeLayout>

@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <WebView
-        android:id="@+id/web_view"
+        android:id="@+id/webview"
         android:layout_marginTop="64dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

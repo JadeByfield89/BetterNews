@@ -1,6 +1,7 @@
 package co.betterup.betterfeed.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +9,13 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import co.betterup.betterfeed.R
+import kotlinx.android.synthetic.main.*
 import kotlinx.android.synthetic.main.fragment_article_webview.*
+import kotlinx.android.synthetic.main.fragment_article_webview.view.*
 
 class ArticleWebViewFragment : Fragment(), ArticleWebView {
 
     private var mUrl: String? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,15 +23,9 @@ class ArticleWebViewFragment : Fragment(), ArticleWebView {
         savedInstanceState: Bundle?
     ): View {
 
-        val view = inflater.inflate(R.layout.fragment_article_webview, container, false)
-        val settings = web_view.settings
-        settings.javaScriptEnabled = true
-        settings.domStorageEnabled = true
+        mUrl = arguments?.getString(KEY_URL)
+        return LayoutInflater.from(activity).inflate(R.layout.fragment_article_webview, container, false)
 
-        web_view.webViewClient = DefaultWebViewClient()
-        showArticleInBrowser(mUrl)
-
-        return view
     }
 
 
@@ -47,6 +43,14 @@ class ArticleWebViewFragment : Fragment(), ArticleWebView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //val webview = view.findViewById<WebView>(R.id.webview)
+        val settings = view.webview.settings
+        settings.javaScriptEnabled = true
+        settings.domStorageEnabled = true
+
+        view.webview.webViewClient = DefaultWebViewClient()
+        showArticleInBrowser(mUrl)
+
     }
 
     open class DefaultWebViewClient : WebViewClient() {
@@ -57,6 +61,7 @@ class ArticleWebViewFragment : Fragment(), ArticleWebView {
 
 
     override fun showArticleInBrowser(url: String?) {
-        web_view.loadUrl(mUrl)
+        view?.webview?.loadUrl(mUrl)
+        Log.d("ArticleWebViewFragment", "Loading URL " + url)
     }
 }

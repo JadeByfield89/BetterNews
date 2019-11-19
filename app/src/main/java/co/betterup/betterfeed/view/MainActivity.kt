@@ -3,6 +3,7 @@ package co.betterup.betterfeed.view
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.betterup.betterfeed.R
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * This is just provided as a starting point and this and any other part of this project can
  * be changed in any way you see fit.
  */
-class MainActivity : AppCompatActivity(), MainFeedView {
+class MainActivity : FragmentActivity(), MainFeedView {
 
     private var mPresenter : MainFeedPresenterImpl = MainFeedPresenterImpl(this)
 
